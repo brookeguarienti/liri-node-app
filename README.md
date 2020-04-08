@@ -1,17 +1,17 @@
 # liri-node-app
 Language Interpretation and Recognition Interface Node Application 
 
-## what problem does liri-node-app solve?
+## What problem does liri-node-app solve?
 
-## organization of the app
+## Organization of the app
 
-## instructions to run the app
+## Instructions to run the app
 
-## screenshots of app functioning
+## Screenshots of app functioning
 
-## deployed version link 
+## Deployed version link 
 
-## technologies used
+## Technologies used
 * Node Spotify API
 * Axios
 * OMDB API
@@ -19,4 +19,4 @@ Language Interpretation and Recognition Interface Node Application
 * Moment
 * DotEnv
 
-## my role 
+## My role 
