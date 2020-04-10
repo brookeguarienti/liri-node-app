@@ -21,7 +21,6 @@ var command = process.argv[2];
 
 var input = process.argv.slice(3).join(" ");
 
-
 switch (command) {
   case "concert-this":
     concert();
@@ -39,6 +38,8 @@ switch (command) {
     console.log("Please submit a valid request");
 }
 
+
+
 function concert() {
   var concertUrl = `https://rest.bandsintown.com/artists/${input}/events?app_id=codingbootcamp`;
     
@@ -51,7 +52,8 @@ function concert() {
         console.log(`\nVenue Name: ${response.data[i].venue.name}\nLocated in: ${response.data[i].venue.city}, ${response.data[i].venue.country}\nDate and Time: ${moment(response.data[i].datatime).format("MM/DD/YYYY LT")}\n\n////////////////////////////////////`);
         
     }
-  })
+  });
+  logCommands(command, input);
 }
 
 function music(){
@@ -66,7 +68,9 @@ function music(){
             console.log(`\nArtist: ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].preview_url}\nAlbum: ${data.tracks.items[0].album.name}\n\n////////////////////////////////////`);
             
         }
-    })
+    });
+    logCommands(command, input);
+
 }
 
 function movie(){
@@ -77,22 +81,43 @@ function movie(){
     axios.get(omdbUrl).then(
   function(response) {
     console.log(`\nTitle: ${response.data.Title}\nYear: ${response.data.Year}\nIMDB Rating: ${response.data.imdbRating}\nRotten Tomatoes Rating: ${response.data.Ratings[1].Value}\nCountry Produced: ${response.data.Country}\nLanguage: ${response.data.Plot}\nActors: ${response.data.Actors}\n\n////////////////////////////////////\n`);
-  })
+  });
+  logCommands(command, input);
+
   
 }
 
 function random(){
     fs.readFile("random.txt", "utf8", function(error, data) {
-
-        // If the code experiences any errors it will log the error to the console.
         if (error) {
           return console.log(error);
         }
         // Then split it by commas (to make it more readable)
         var dataArr = data.split(", ");
-
-        // We will then re-display the content as an array for later use.
-         console.log(dataArr);
-      
+        if(dataArr[0] === "spotify-this-song"){
+            input = dataArr[1];
+            music();
+        }else if(dataArr[0] === "concert-this"){
+            input = dataArr[1];
+            concert();
+        }else if(dataArr[0] === "movie-this"){
+            input = dataArr[1];
+            movie();
+        }else{
+            console.log(`Need a command!`);
+            
+        }
+    
       });
+}
+function logCommands (command, input) {
+    fs.appendFile("log.txt", `${command}, ${input}`, function(error){
+        if (error){
+            console.log(error);
+            
+        }else{
+            console.log(`\nThe Command: ${command} was logged.\nThe input: ${input} was also logged.\n`);
+            
+        }
+    })
 }
