@@ -10,17 +10,20 @@ var axios = require("axios");
 // grab the moment package
 var moment = require('moment');
 
-//
+// grab the filesource for text documents
 var fs = require("fs");
 
 // accessing spotify key and set to spotify variable
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 
+// set var command to the third user input 
 var command = process.argv[2];
 
+// set var input to the fourth user input, slice, and join as a string
 var input = process.argv.slice(3).join(" ");
 
+// set up switch cases
 switch (command) {
   case "concert-this":
     concert();
@@ -39,7 +42,7 @@ switch (command) {
 }
 
 
-
+// function concert for case "concert-this"
 function concert() {
   var concertUrl = `https://rest.bandsintown.com/artists/${input}/events?app_id=codingbootcamp`;
     
@@ -56,6 +59,7 @@ function concert() {
   logCommands(command, input);
 }
 
+// function music for case "spotify-this-song"
 function music(){
     if (command === "spotify-this-song" && process.argv[3] === undefined){
         input = "The Sign";
@@ -73,6 +77,7 @@ function music(){
 
 }
 
+// function movie for case "movie-this"
 function movie(){
     if (command === "movie-this" && process.argv[3] === undefined){
         input = "Mr. Nobody";
@@ -87,6 +92,7 @@ function movie(){
   
 }
 
+// function random pulling from random.txt file
 function random(){
     fs.readFile("random.txt", "utf8", function(error, data) {
         if (error) {
@@ -110,8 +116,10 @@ function random(){
     
       });
 }
+
+// function log commands will log commands entered from user into log.txt file
 function logCommands (command, input) {
-    fs.appendFile("log.txt", `${command}, ${input}`, function(error){
+    fs.appendFile("log.txt", `\n${command}, ${input}`, function(error){
         if (error){
             console.log(error);
             
@@ -119,5 +127,5 @@ function logCommands (command, input) {
             console.log(`\nThe Command: ${command} was logged.\nThe input: ${input} was also logged.\n`);
             
         }
-    })
+    });
 }
