@@ -29,8 +29,11 @@ switch (command) {
   case "spotify-this-song":
     music();
     break;
-  case "do-what-it-says":
+  case "movie-this":
     movie();
+    break;
+  case "do-what-it-says":
+    random();
     break;
   default:
     console.log("Please submit a valid request");
@@ -64,4 +67,32 @@ function music(){
             
         }
     })
+}
+
+function movie(){
+    if (command === "movie-this" && process.argv[3] === undefined){
+        input = "Mr. Nobody";
+    }
+    var omdbUrl = `http://www.omdbapi.com/?t=${input}&y=&plot=short&apikey=trilogy`;
+    axios.get(omdbUrl).then(
+  function(response) {
+    console.log(`\nTitle: ${response.data.Title}\nYear: ${response.data.Year}\nIMDB Rating: ${response.data.imdbRating}\nRotten Tomatoes Rating: ${response.data.Ratings[1].Value}\nCountry Produced: ${response.data.Country}\nLanguage: ${response.data.Plot}\nActors: ${response.data.Actors}\n\n////////////////////////////////////\n`);
+  })
+  
+}
+
+function random(){
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        // If the code experiences any errors it will log the error to the console.
+        if (error) {
+          return console.log(error);
+        }
+        // Then split it by commas (to make it more readable)
+        var dataArr = data.split(", ");
+
+        // We will then re-display the content as an array for later use.
+         console.log(dataArr);
+      
+      });
 }
