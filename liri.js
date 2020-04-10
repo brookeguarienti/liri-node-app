@@ -45,18 +45,23 @@ function concert() {
         // console.log(response.data[i].venue.name);
         // console.log(response.data[i].venue.city);
         // console.log(moment(response.data[i].datetime).format("MM/DD/YYYY LT"));
-        console.log(`\nVenue Name: ${response.data[i].venue.name}\nLocated in: ${response.data[i].venue.city}, ${response.data[i].venue.country}\nDate and Time: ${moment(response.data[i].datatime).format("MM/DD/YYYY LT")}`);
+        console.log(`\nVenue Name: ${response.data[i].venue.name}\nLocated in: ${response.data[i].venue.city}, ${response.data[i].venue.country}\nDate and Time: ${moment(response.data[i].datatime).format("MM/DD/YYYY LT")}\n\n////////////////////////////////////`);
         
     }
   })
 }
 
 function music(){
-    // var musicUrl = `https://api.spotify.com/v1/${input}/${}`;
-    spotify.search({ type: 'track', query: `${input}`}).then(function(response) {
-      console.log(response);
+    if (command === "spotify-this-song" && process.argv[3] === undefined){
+        input = "The Sign";
+    }
+    spotify
+    .search({ type: "track", query: input, limit: 1 }, function(err, data){
+        if (err){
+            console.log(`an error occured: ${err}`);
+        }else{
+            console.log(`\nArtist: ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].preview_url}\nAlbum: ${data.tracks.items[0].album.name}\n\n////////////////////////////////////`);
+            
+        }
     })
-    .catch(function(err) {
-      console.log(err);
-    });
 }
