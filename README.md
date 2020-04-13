@@ -1,7 +1,6 @@
 # liri-node-app
 Language Interpretation and Recognition Interface Node Application 
 
-## Purpose?
 The liri-node-app is able to quickly pull data for songs, concerts, and movies using commands and user search input.
 
 ## Commands
@@ -35,6 +34,7 @@ The liri-node-app consists of the following files:
 - .gitignore
 - .env
 - node_modules
+- screenshots
 
 ## Instructions to run the app
 1. Open terminal and navigate to the liri.js file
@@ -66,7 +66,7 @@ The liri-node-app consists of the following files:
     ![do-what-it-says](screenshots/do-what-it-says.png)
 
 
-6. If no command is entered, the default will display
+6. If no command is entered, the default will display _"Please submit a valid request"_
 
     ```node liri.js```
 
