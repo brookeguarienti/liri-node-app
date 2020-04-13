@@ -6,7 +6,7 @@ The liri-node-app is able to quickly pull data for songs, concerts, and movies u
 
 ## Commands
 #### Concert
-Using the OMDB API, a user is able to search for upcoming concerts based on the artist they search for
+Using the Bands in Town API, a user is able to search for upcoming concerts based on the artist they search input
   
 #### Spotify
 Using the Spotify API, a user is able to search by song title to find the following information:
