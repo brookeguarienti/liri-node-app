@@ -85,7 +85,7 @@ function movie(){
     var omdbUrl = `http://www.omdbapi.com/?t=${input}&y=&plot=short&apikey=trilogy`;
     axios.get(omdbUrl).then(
   function(response) {
-    console.log(`\nTitle: ${response.data.Title}\nYear: ${response.data.Year}\nIMDB Rating: ${response.data.imdbRating}\nRotten Tomatoes Rating: ${response.data.Ratings[1].Value}\nCountry Produced: ${response.data.Country}\nLanguage: ${response.data.Plot}\nActors: ${response.data.Actors}\n\n////////////////////////////////////\n`);
+    console.log(`\nTitle: ${response.data.Title}\nYear: ${response.data.Year}\nIMDB Rating: ${response.data.imdbRating}\nRotten Tomatoes Rating: ${response.data.Ratings[1].Value}\nCountry Produced: ${response.data.Country}\nLanguage: ${response.data.Language}\nPlot:${response.data.Plot}\nActors: ${response.data.Actors}\n\n////////////////////////////////////\n`);
   });
   logCommands(command, input);
 
