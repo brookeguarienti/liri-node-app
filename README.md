@@ -38,31 +38,59 @@ The liri-node-app consists of the following files:
 
 ## Instructions to run the app
 1. Open terminal and navigate to the liri.js file
+
+   Note: "The Command: " and "The Input: " are console logged, as we see later that these logs are added to the log.txt file
+
 2. Enter the following to find a concert for an artist of your choice
 
     ```node liri.js concert-this < artist name >```
+
+    ![concert-this](screenshots/concert-this.png)
     
 3. Enter the following to find song information of your choice
 
     ```node liri.js spotify-this-song < song title >```
+
+    ![spotify-this-song](screenshots/spotify-this-song-results.png)
     
 4. Enter the following to find movie information 
 
     ```node liri.js movie-this < movie title >```
+
+    ![movie-this](screenshots/movie-this.png)
     
-5. Enter the following to show what is in random.txt
+5. Enter the following to show what is in the ```random.txt``` file
     
     ```node liri.js do-what-it-says```
+
+    ![do-what-it-says](screenshots/do-what-it-says.png)
+
+
+6. If no command is entered, the default will display
+
+    ```node liri.js```
+
+    ![liri-no-command](screenshots/liri-no-command-entered.png)
+
+7. As commands and input are entered, they are logged in the ```log.txt``` file
+
+    ![log-txt-file](screenshots/log-txt-file.png)
 
 
 
 ## Technologies used
-* Node Spotify API
-* Axios
-* OMDB API
-* Bands in Town API
-* Moment
-* DotEnv
+* JavaScript
+* Nodejs
+* Node Packages:
+    * Axios
+    * Dotenv
+    * Moment
+    * Node-Spotify-API
+* APIs:
+    * Bands in Town 
+    * OMDB
+* Git
+* GitHub
 
 ## Author
 Brooke Guarienti
